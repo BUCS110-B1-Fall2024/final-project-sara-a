@@ -12,10 +12,10 @@ class Ball:
        self.x += self.x_speed
        self.y += self.y_speed
        if self.y - self.radius <= 0 or self.y + self.radius >= screen_height:
-           self.y_speed = -self.y_speed
-      
+          self.y_speed = -self.y_speed
+
    def reset_ball(self):
        self.x = self.initializex
        self.y = self.initializey
-       self.x_speed *= -1
-       self.y_speed *= 5
+       self.x_speed = abs(self.x_speed)
+       self.y_speed *= -1

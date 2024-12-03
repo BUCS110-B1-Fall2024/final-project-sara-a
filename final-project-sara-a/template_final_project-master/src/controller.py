@@ -37,15 +37,18 @@ class Controller:
        if self.paddle1.x <= self.ball.x - self.ball.radius <= self.paddle1.x + self.paddle1.width:
            if self.paddle1.y <= self.ball.y <= self.paddle1.y +self.paddle1.height:
                self.ball.x_speed = -self.ball.x_speed
+               
        if self.paddle2.x <= self.ball.x - self.ball.radius <= self.paddle2.x + self.paddle1.width:
            if self.paddle2.y <= self.ball.y <= self.paddle2.y + self.paddle2.height:
                self.ball.x_speed = -self.ball.x_speed
+              
+       if self.ball.y - self.ball.radius <= 0 or self.ball.y + self.ball.radius >= 800:
+           self.ball.y_speed = -self.ball.y_speed
        if self.ball.x - self.ball.radius < 0:
            self.gameoverloop("Right Player")
        if self.ball.x + self.ball.radius > 800:
            self.gameoverloop("Left Player")
-       if self.ball.y - self.ball.radius <= 0 or self.ball.y + self.ball.radius >= 800:
-           self.ball.y_speed = -self.ball.y_speed
+       
    def redraw(self):
        self.screen.fill("black")
        pygame.draw.rect(self.screen, self.paddle1.color, (self.paddle1.x, self.paddle1.y, self.paddle1.width, self.paddle1.height))
