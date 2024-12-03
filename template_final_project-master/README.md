@@ -6,14 +6,12 @@
 
 ## Team Members
 
-<< List team member names >>
-
+Sara Antin
 ***
 
 ## Project Description
 
-<< Give an overview of your project >>
-
+It is going to simulate a ping pong game. One paddle is moveable by the player and the other is moveable by the computer. the goal is to bounce the ball from pne paddle to the other. if player misses the game ends.
 ***    
 
 ## GUI Design
@@ -30,11 +28,11 @@
 
 ### Features
 
-1. << Feature 1 >>
-2. << Feature 2 >>
-3. << Feature 3 >>
-4. << Feature 4 >>
-5. << Feature 5 >>
+1. start menu
+2. moveable paddle
+3. gameover screen
+4. obstacle paddle
+5. bouncing ball
 
 ### Classes
 

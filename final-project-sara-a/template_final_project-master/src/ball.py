@@ -6,9 +6,8 @@ class Ball:
        self.x_speed = x_speed
        self.y_speed = y_speed
        self.color = color
-       self.initialize_x = x
-       self.initialize_y = y
-      
+       self.initializex = x
+       self.initializey = y
    def move(self, screen_height):
        self.x += self.x_speed
        self.y += self.y_speed
@@ -16,7 +15,7 @@ class Ball:
            self.y_speed = -self.y_speed
       
    def reset_ball(self):
-       self.x = self.initialize_x
-       self.y = self.initialize_y
+       self.x = self.initializex
+       self.y = self.initializey
        self.x_speed *= -1
-       self.y_speed *= -1
+       self.y_speed *= 5
