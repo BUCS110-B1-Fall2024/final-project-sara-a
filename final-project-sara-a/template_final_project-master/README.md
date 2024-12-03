@@ -12,7 +12,7 @@ Sara Antin
 
 ## Project Description
 
-It is going to simulate a ping pong game. One paddle is moveable by the player and the other is moveable by the computer. the goal is to bounce the ball from pne paddle to the other. if player misses the game ends.
+It is going to simulate a ping pong game. both paddles are moveable by the player, for paddle 2, the player presses the up and down arrows to move up and down. and for paddle 1 the player presses the w and s keys to move up and down. the goal is to bounce the ball from pne paddle to the other. if player misses the game ends.
 
 ***    
 
@@ -38,7 +38,9 @@ It is going to simulate a ping pong game. One paddle is moveable by the player a
 
 ### Classes
 
-- << You should have a list of each of your classes with a description >>
+- ball class: it makes the ball that moves between the two paddles for the game. this is what is getting bounced. if the paddles miss the ball then the game ends
+- paddle class: this creates the two paddles. the player controls both paddles and they play the game against themself by moving each paddle up and down to bounce the ball off of.
+- controller class: this is where i imported the ball and paddle to in order to use them and make the game
 
 ## ATP
 
