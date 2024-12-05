@@ -1,4 +1,5 @@
 import pygame
+import random
 from src.ball import Ball
 from src.paddle import Paddle
 
@@ -14,7 +15,7 @@ class Controller:
    def start_menu(self):
        running = True
        while running:
-           self.screen.fill("black")
+           self.screen.fill("pink")
            font = pygame.font.Font(None, 50)
            text = font.render("Ping Pong", True, (255, 255, 255))
            details_text = font.render("w to move left up, s to move left down", True, (255, 255, 255))
@@ -35,13 +36,13 @@ class Controller:
                    running = False
    def detect_collisions(self):
        if self.paddle1.x <= self.ball.x - self.ball.radius <= self.paddle1.x + self.paddle1.width:
-           if self.paddle1.y <= self.ball.y <= self.paddle1.y +self.paddle1.height:
+           if self.paddle1.y <= self.ball.y <= self.paddle1.y + self.paddle1.height:
                self.ball.x_speed = -self.ball.x_speed
                
        if self.paddle2.x <= self.ball.x - self.ball.radius <= self.paddle2.x + self.paddle1.width:
            if self.paddle2.y <= self.ball.y <= self.paddle2.y + self.paddle2.height:
                self.ball.x_speed = -self.ball.x_speed
-              
+                
        if self.ball.y - self.ball.radius <= 0 or self.ball.y + self.ball.radius >= 800:
            self.ball.y_speed = -self.ball.y_speed
        if self.ball.x - self.ball.radius < 0:
@@ -50,7 +51,7 @@ class Controller:
            self.gameoverloop("Left Player")
        
    def redraw(self):
-       self.screen.fill("black")
+       self.screen.fill("pink")
        pygame.draw.rect(self.screen, self.paddle1.color, (self.paddle1.x, self.paddle1.y, self.paddle1.width, self.paddle1.height))
        pygame.draw.rect(self.screen, self.paddle2.color, (self.paddle2.x, self.paddle2.y, self.paddle2.width, self.paddle2.height))
        pygame.draw.circle(self.screen, self.ball.color, (self.ball.x, self.ball.y), self.ball.radius)
@@ -58,7 +59,7 @@ class Controller:
   
    def gameoverloop(self, winner):
        while True:
-           self.screen.fill("black")
+           self.screen.fill("pink")
            font = pygame.font.Font(None, 74)
            win_text = font.render(f"{winner} wins", True, (255, 255, 255))
            instruct_text = font.render("S to start again or E to end game", True, (255, 255, 255))

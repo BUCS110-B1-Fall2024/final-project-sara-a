@@ -63,9 +63,9 @@ test steps:
 start the game
 move right paddle to hit ball
 ball should bounce of paddle
-dont move left paddle and let ball go out of the screen
+move left paddle up to the top of the screen and let ball miss and go out of the screen
 verify game ends after missed hit
-expected outcome: ball should bounce off hit paddle and game should end after paddle misses
+expected outcome: ball should bounce off hit paddle and game should end after second paddle misses
 
 test case 3: game over condition
 description: make sure game ends when ball falls out of the screen
