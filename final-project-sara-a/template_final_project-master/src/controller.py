@@ -42,11 +42,9 @@ class Controller:
        if self.paddle1.x <= self.ball.x - self.ball.radius <= self.paddle1.x + self.paddle1.width:
           if self.paddle1.y <= self.ball.y <= self.paddle1.y +self.paddle1.height:
               self.ball.x_speed = -self.ball.x_speed
-              self.ball.y_speed += random.uniform(-2, 2)
        if self.paddle2.x <= self.ball.x - self.ball.radius <= self.paddle2.x + self.paddle2.width:
           if self.paddle2.y <= self.ball.y <= self.paddle2.y + self.paddle2.height:
               self.ball.x_speed = -self.ball.x_speed
-              self.ball.y_speed += random.uniform(-2, 2)
        if self.ball.y - self.ball.radius <= 0 or self.ball.y + self.ball.radius >= 800:
             self.ball.y_speed = -self.ball.y_speed
        if self.ball.x - self.ball.radius < 0:
