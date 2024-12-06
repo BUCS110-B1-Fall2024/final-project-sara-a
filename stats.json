@@ -1,10 +1,10 @@
 {
     "left player": {
-        "wins": 6,
-        "score": 6
-    },
-    "right player": {
         "wins": 1,
         "score": 1
+    },
+    "right player": {
+        "wins": 0,
+        "score": 0
     }
 }
