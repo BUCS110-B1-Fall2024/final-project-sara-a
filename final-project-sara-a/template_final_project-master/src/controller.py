@@ -1,6 +1,5 @@
 import pygame
 import json
-import random
 from src.ball import Ball
 from src.paddle import Paddle
 
@@ -52,7 +51,7 @@ class Controller:
             self.gameoverloop("right player", self.player1_score, self.player2_score)
        if self.ball.x + self.ball.radius > 800:
             self.player1_score += 1
-
+            self.gameoverloop("left player", self.player1_score, self.player2_score)
        
    def redraw(self):
        self.screen.fill("pink")
