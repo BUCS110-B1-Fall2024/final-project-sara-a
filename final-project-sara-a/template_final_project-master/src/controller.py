@@ -1,4 +1,5 @@
 import pygame
+import json
 import random
 from src.ball import Ball
 from src.paddle import Paddle
@@ -12,6 +13,9 @@ class Controller:
       self.paddle1 = Paddle(50, 300, 20, 100, (255, 255, 255), 10, 800)
       self.paddle2 = Paddle(730, 300, 20, 100, (255, 255, 255), 10, 800)
       self.ball = Ball(400, 400, 10, 5, 5, (255, 255, 255))
+      self.player1_score = 0
+      self.player2_score = 0
+    
    def start_menu(self):
        running = True
        while running:
@@ -36,19 +40,21 @@ class Controller:
                    running = False
    def detect_collisions(self):
        if self.paddle1.x <= self.ball.x - self.ball.radius <= self.paddle1.x + self.paddle1.width:
-           if self.paddle1.y <= self.ball.y <= self.paddle1.y + self.paddle1.height:
+           if self.paddle1.y <= self.ball.y <= self.paddle1.y +self.paddle1.height:
                self.ball.x_speed = -self.ball.x_speed
-               
-       if self.paddle2.x <= self.ball.x - self.ball.radius <= self.paddle2.x + self.paddle1.width:
+               self.ball.y_speed += random.uniform(-2, 2)
+       if self.paddle2.x <= self.ball.x - self.ball.radius <= self.paddle2.x + self.paddle2.width:
            if self.paddle2.y <= self.ball.y <= self.paddle2.y + self.paddle2.height:
                self.ball.x_speed = -self.ball.x_speed
-                
+               self.ball.y_speed += random.uniform(-2, 2)
        if self.ball.y - self.ball.radius <= 0 or self.ball.y + self.ball.radius >= 800:
            self.ball.y_speed = -self.ball.y_speed
        if self.ball.x - self.ball.radius < 0:
-           self.gameoverloop("Right Player")
+           self.player2_score += 1
+           self.gameoverloop("right player", self.player1_score, self.player2_score)
        if self.ball.x + self.ball.radius > 800:
-           self.gameoverloop("Left Player")
+           self.player1_score += 1
+           self.gameoverloop("left player", self.player1_score, self.player2_score)
        
    def redraw(self):
        self.screen.fill("pink")
@@ -56,8 +62,27 @@ class Controller:
        pygame.draw.rect(self.screen, self.paddle2.color, (self.paddle2.x, self.paddle2.y, self.paddle2.width, self.paddle2.height))
        pygame.draw.circle(self.screen, self.ball.color, (self.ball.x, self.ball.y), self.ball.radius)
        pygame.draw.line(self.screen, (255, 255, 255), (400, 0), (400, 800), 1)
-  
-   def gameoverloop(self, winner):
+   def save_scores(self, winner, score1, score2, filename = "stats.json"):
+        try:
+            with open(filename, 'r') as file:
+                stats = json.load(file)
+        except FileNotFoundError:
+            stats = {
+                "left player": {"wins": 0, "score": 0},
+                "right player": {"wins": 0, "score": 0}
+            }
+        if winner == "left player":
+            stats["left player"]["wins"] += 1
+            stats["left player"]["score"] += score1
+        elif winner == "right player":
+            stats["right player"]["wins"] += 1
+            stats["right player"]["score"] += score2
+        with open(filename, 'w') as file:
+                json.dump(stats, file, indent = 4)
+       
+
+   def gameoverloop(self, winner, score1, score2):
+       self.save_scores(winner, score1, score2)
        while True:
            self.screen.fill("pink")
            font = pygame.font.Font(None, 74)
@@ -80,8 +105,7 @@ class Controller:
    def reset_game(self):
        self.ball.reset_ball()
        self.paddle1.y = 300
-       self.paddle2.y = 300
-                      
+       self.paddle2.y = 300             
    def mainloop(self):
       self.start_menu()
       running = True

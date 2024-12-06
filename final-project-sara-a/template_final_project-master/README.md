@@ -1,8 +1,8 @@
 
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 
-# << Project Title >>
-## CS110 B1 Final Project  << Semester, Year >>
+# Ping Pong Game
+## CS110 B1 Final Project fall, 2024
 
 ## Team Members
 
@@ -62,7 +62,7 @@ description: make sure the collisions between the ball and each paddle are detec
 test steps:
 start the game
 move right paddle to hit ball
-ball should bounce of paddle
+ball should bounce off of paddle
 move left paddle up to the top of the screen and let ball miss and go out of the screen
 verify game ends after missed hit
 expected outcome: ball should bounce off hit paddle and game should end after second paddle misses
@@ -82,7 +82,7 @@ open game
 make sure message that says to press enter to begin is displayed
 press enter
 ensure game begins
-expected outcome: game will start once enter/return key is pressed
+expected outcome: game will start once return key is pressed
 
 test case 5: wrong keys pressed
 steps:

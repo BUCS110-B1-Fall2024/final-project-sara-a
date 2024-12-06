@@ -13,7 +13,6 @@ class Ball:
        self.y += self.y_speed
        if self.y - self.radius <= 0 or self.y + self.radius >= screen_height:
           self.y_speed = -self.y_speed
-
    def reset_ball(self):
        self.x = self.initializex
        self.y = self.initializey
